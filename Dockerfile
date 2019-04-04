@@ -18,7 +18,7 @@ RUN mkdir /app/.m2 && chmod -R a+w /app
 
 EXPOSE 8080
 
-# CMD java -Djetty.contextpath="${JETTY_CONTEXTPATH}" -jar target/dependency/jetty-runner.jar target/plantuml.war
+CMD java -jar target/dependency/jetty-runner.jar --path ${JETTY_CONTEXTPATH} target/plantuml.war
 
 # To run with debugging enabled instead
-CMD java -Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.StdErrLog -Dorg.eclipse.jetty.LEVEL=DEBUG -Djetty.contextpath="${JETTY_CONTEXTPATH}" -jar target/dependency/jetty-runner.jar target/plantuml.war
+# CMD java -Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.StdErrLog -Dorg.eclipse.jetty.LEVEL=DEBUG -jar target/dependency/jetty-runner.jar --path ${JETTY_CONTEXTPATH} target/plantuml.war
