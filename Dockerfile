@@ -6,14 +6,17 @@ COPY pom.xml /app/
 COPY src /app/src/
 
 ENV MAVEN_CONFIG=/app/.m2
+ENV HOME /app
+ENV JETTY_CONTEXTPATH=/
+
 WORKDIR /app
+
 RUN mvn package
 
 # chmod required to ensure any user can run the app
 RUN mkdir /app/.m2 && chmod -R a+w /app
+
 EXPOSE 8080
-ENV HOME /app
-ENV JETTY_CONTEXTPATH
 
 CMD java -Djetty.contextpath=${JETTY_CONTEXTPATH} -jar target/dependency/jetty-runner.jar target/plantuml.war
 
