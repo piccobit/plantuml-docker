@@ -2,8 +2,8 @@ FROM maven:3-jdk-8
 
 RUN apt-get update && apt-get install -y --no-install-recommends graphviz fonts-wqy-zenhei && rm -rf /var/lib/apt/lists/*
 
-COPY pom.xml /app/
-COPY src /app/src/
+ADD pom.xml /app/
+ADD src /app/src/
 
 ENV MAVEN_CONFIG=/app/.m2
 ENV HOME /app
