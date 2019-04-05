@@ -28,4 +28,4 @@ The plantuml-server is now listening on port 8080 and available using the follow
 
 ## How to serve plantuml images for GitHub
 
-The 'examples' folder contains an example showing you how to use the plantuml-server to provide images for your GitHub Markdown files.
+The [examples](examples) folder contains an example showing you how to use the plantuml-server to provide images for your GitHub Markdown files.
