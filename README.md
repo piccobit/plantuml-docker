@@ -26,6 +26,10 @@ The plantuml-server is now listening on port 8080 and available using the follow
 
     http://localhost:8080/plantuml
 
+## How to use
+
+The [plantuml-server description](http://plantuml.com/de/server) provides a detailled explanation how to use the plantuml-server.
+
 ## How to serve plantuml images for GitHub
 
 The [examples](examples) folder contains an example showing you how to use the plantuml-server to provide images for your GitHub Markdown files.
