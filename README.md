@@ -48,4 +48,4 @@ Insert this plantUML server URL into your Markdown file:
 
 ![](doc/images/use-in-markdown.png)
 
-Replacing the `png` part in your plantUML server URL with `svg` renders your graph as SVG, but to get this also working on GitHub you have to sanitize the SVG first using the GitHub sanitizer by adding `&sanizize=1` do your SVG URL.
+Replacing the `png` part in your plantUML server URL with `svg` renders your graph as SVG, but to get this also working on GitHub you have to sanitize the SVG first using the GitHub sanitizer by adding `&sanitize=1` do your SVG URL.
