@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  name: plantuml
+  namespace: default
+spec:
+  rules:
+  - host: plantuml.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: plantuml
+          servicePort: 80
+        path: /
+        #
+        # Do access the plantUML server on a non-root context path,
+        # adjust the line below:
+        #
+        # path: /plantuml
+      - backend:
+          serviceName: default-http-backend
+          servicePort: 80
+        path: /healthz
+  tls:
+  - hosts:
+    - plantuml.example.com
+    secretName: tls-plantuml.example.com

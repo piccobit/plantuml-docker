@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: plantuml
+  name: plantuml
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plantuml
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: plantuml
+    spec:
+      containers:
+      - image: quay.io/piccobit/plantuml-server:v0.6.0
+        imagePullPolicy: Always
+        name: plantuml
+        ports:
+        - containerPort: 8080
+          protocol: TCP
