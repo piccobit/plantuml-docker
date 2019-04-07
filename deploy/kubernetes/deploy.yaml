@@ -21,7 +21,7 @@ spec:
         app: plantuml
     spec:
       containers:
-      - image: quay.io/piccobit/plantuml-server:v0.6.0
+      - image: quay.io/piccobit/plantuml-server:latest
         imagePullPolicy: Always
         name: plantuml
         ports:
