@@ -1,4 +1,4 @@
-# Deploy the plantUML server to a Kuberneetes cluster
+# Deploy the plantUML server to a Kubernetes cluster
 
 The example manifests in this folder show you how to deploy the plantUML server to a Kubernetes cluster.
 
