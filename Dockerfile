@@ -22,7 +22,7 @@ RUN curl -LsS -o jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/je
 RUN curl -LsS -o plantuml.war ${PLANTUML_URL}
 
 RUN chown plantuml:plantuml jetty-runner.jar
-RUN chown plantuml:plantuml plantuml.jar
+RUN chown plantuml:plantuml plantuml.war
 
 EXPOSE 8080
 
