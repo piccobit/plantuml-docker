@@ -14,15 +14,14 @@ ARG JETTY_RUNNER_VERSION=9.4.9.v20180320
 
 ARG PLANTUML_URL=https://downloads.sourceforge.net/project/plantuml/plantuml.war
 
-ENV JETTY_CONTEXTPATH=/
-
 WORKDIR /home/plantuml
+
+USER plantuml
+
+ENV JETTY_CONTEXTPATH=/
 
 RUN curl -LsS -o jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/jetty-runner-${JETTY_RUNNER_VERSION}.jar
 RUN curl -LsS -o plantuml.war ${PLANTUML_URL}
-
-RUN chown plantuml:plantuml jetty-runner.jar
-RUN chown plantuml:plantuml plantuml.war
 
 EXPOSE 8080
 
