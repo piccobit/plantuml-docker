@@ -18,7 +18,7 @@ ENV JETTY_CONTEXTPATH=/
 
 WORKDIR /home/plantuml
 
-RUN curl -LsS -o /opt/jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/jetty-runner-${JETTY_RUNNER_VERSION}.jar
+RUN curl -LsS -o jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/jetty-runner-${JETTY_RUNNER_VERSION}.jar
 RUN curl -LsS -o plantuml.war ${PLANTUML_URL}
 
 EXPOSE 8080
