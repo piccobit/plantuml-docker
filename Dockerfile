@@ -21,6 +21,9 @@ WORKDIR /home/plantuml
 RUN curl -LsS -o jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/jetty-runner-${JETTY_RUNNER_VERSION}.jar
 RUN curl -LsS -o plantuml.war ${PLANTUML_URL}
 
+RUN chown plantuml:plantuml jetty-runner.jar
+RUN chown plantuml:plantuml plantuml.jar
+
 EXPOSE 8080
 
 CMD java -jar jetty-runner.jar --path ${JETTY_CONTEXTPATH} plantuml.war
