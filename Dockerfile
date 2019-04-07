@@ -1,24 +1,29 @@
-FROM maven:3-jdk-8
+FROM openjdk:8-jdk
 
-RUN apt-get update && apt-get install -y --no-install-recommends graphviz fonts-wqy-zenhei && rm -rf /var/lib/apt/lists/*
+MAINTAINER HD Stich <hd@kubernetes.zone>
 
-ADD pom.xml /app/
-ADD src /app/src/
+RUN apt-get update && apt-get install -y --no-install-recommends graphviz && rm -rf /var/lib/apt/lists/*
 
-ENV MAVEN_CONFIG /app/.m2
-ENV HOME /app
+RUN groupadd -g 1000 plantuml \
+    && useradd -N -M -d /home/plantuml -g plantuml -u 1000 plantuml \
+    && mkdir -p /home/plantuml \
+    && chown plantuml:plantuml /home/plantuml
+
+ARG JETTY_RUNNER_URL=https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner
+ARG JETTY_RUNNER_VERSION=9.4.9.v20180320
+
+ARG PLANTUML_URL=https://downloads.sourceforge.net/project/plantuml/plantuml.war
+
 ENV JETTY_CONTEXTPATH=/
 
-WORKDIR /app
+WORKDIR /home/plantuml
 
-RUN mvn package
-
-# chmod required to ensure any user can run the app
-RUN mkdir /app/.m2 && chmod -R a+w /app
+RUN curl -LsS -o /opt/jetty-runner.jar ${JETTY_RUNNER_URL}/${JETTY_RUNNER_VERSION}/jetty-runner-${JETTY_RUNNER_VERSION}.jar
+RUN curl -LsS -o plantuml.war ${PLANTUML_URL}
 
 EXPOSE 8080
 
-CMD java -jar target/dependency/jetty-runner.jar --path ${JETTY_CONTEXTPATH} target/plantuml.war
+CMD java -jar jetty-runner.jar --path ${JETTY_CONTEXTPATH} plantuml.war
 
 # To run with debugging enabled instead
-# CMD java -Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.StdErrLog -Dorg.eclipse.jetty.LEVEL=DEBUG -jar target/dependency/jetty-runner.jar --path ${JETTY_CONTEXTPATH} target/plantuml.war
+# CMD java -Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.StdErrLog -Dorg.eclipse.jetty.LEVEL=DEBUG -jar jetty-runner.jar --path ${JETTY_CONTEXTPATH} plantuml.war
