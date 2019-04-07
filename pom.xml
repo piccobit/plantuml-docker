@@ -55,7 +55,7 @@
                             <artifactItem>
                                 <groupId>org.mortbay.jetty</groupId>
                                 <artifactId>jetty-runner</artifactId>
-                                <version>8.1.9.v20130131</version>
+                                <version>9.4.15.v20190215</version>
                                 <destFileName>jetty-runner.jar</destFileName>
                             </artifactItem>
                         </artifactItems>
@@ -168,7 +168,7 @@
   </reporting>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jetty.version>9.4.9.v20180320</jetty.version>
+    <jetty.version>9.4.15.v20190215</jetty.version>
     <jetty.port>8080</jetty.port>
     <jetty.contextpath>/plantuml</jetty.contextpath>
     <maven.build.timestamp.format>yyyyMMdd-HHmm
